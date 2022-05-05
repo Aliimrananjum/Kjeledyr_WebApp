@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>Registrer Bruker</title>
+  <script src="bruker.js"></script>
+  <script src="validering.js"></script>
+  <script src="lagreBruker.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form">
+        <div class="form-group">
+          <h3>Bruker opplysninger</h3>
+          <label for="brukernavn">Brukernavn</label>
+          <input type="text" class="form-control" id="brukernavn" onchange="validerBrukernavn(this.value)" placeholder="Brukernavn">
+          <span id="feilBrukernavn" style="color: red"></span>
+        </div>
+        <div class="form-group">
+          <label for="passord">Passord:</label>
+          <input type="text" class="form-control" id="passord" onchange="validerPassord(this.value)" placeholder="Passord">
+          <span id="feilPassord" style="color: red"></span>
+        </div>
+        <h3>Person opplysninger</h3>
+        <div class="form-group">
+          <label for="fornavn">Fornavn:</label>
+          <input type="text" class="form-control" id="fornavn" onchange="validerFornavn(this.value)" placeholder="Fornavn">
+          <span id="feilFornavn" style="color: red"></span>
+        </div>
+        <div class="form-group">
+          <label for="etternavn">Etternavn:</label>
+          <input type="text" class="form-control" id="etternavn" onchange="validerEtternavn(this.value)" placeholder="Etternavn">
+          <span id="feilEtternavn" style="color: red"></span>
+        </div>
+        <div class="form-group">
+          <label for="epost">Epost:</label>
+          <input type="text" class="form-control" id="epost" onchange="validerEpost(this.value)" placeholder="E-post">
+          <span id="feilEpost" style="color: red"></span>
+        </div>
+        <div class="form-group">
+          <label for="telefon">Telefon:</label>
+          <input type="text" class="form-control" id="telefon" onchange="validerTelefon(this.value)" placeholder="Telefon">
+          <span id="feilTelefon" style="color: red"></span>
+        </div>
+        <div class="form-group">
+          <label for="adresse">Adresse:</label>
+          <input type="text" class="form-control" id="adresse" onchange="validerAdresse(this.value)" placeholder="Adresse">
+          <span id="feilAdresse" style="color: red"></span>
+        </div>
+
+        <!-- RegEx validerer og skal sjekke om postNr finnes i database fra før. Hvis postnr ikke eksisterer i database, gir det feilmelding.-->
+        <div class="form-group">
+          <label for="postnummer">PostNr:</label>
+          <input type="text" class="form-control" id="postnummer" onchange="validerPostNr(this.value)" placeholder="PostNr">
+          <span id="feilPostNr" style="color: red"></span>
+        </div>
+        <div class="form-group">
+          <label for="poststed">PostSted:</label>
+          <input type="text" class="form-control" id="poststed" placeholder="Poststed" disabled>
+        </div>
+        <div class="form-group">
+          <label for="Kjønn">Kjønn:</label>
+          <div id="kjønn">DropDown Her</div>
+          <span id="feilKjønn" style="color: red"></span>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" onclick="registrerBruker()">Registrer</button>
+          <span id="statusBruker" style="color: red"></span>
+          <button class="btn btn-danger" onclick="window.location.href = 'index.html'">Tilbake</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

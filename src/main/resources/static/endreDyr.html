@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Registrer Et Kjæledyr</title>
+    <script src="validering.js"></script>
+    <script src="registrerDyr.js"></script>
+    <script src="endreDyr.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form">
+                <h3>Kjæledyr opplysninger</h3>
+                <div class="form-group">
+                    <input type="text" id="dyrID" disabled>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="brukernavn" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="dNavn">Navn:</label>
+                    <input type="text" class="form-control" id="dNavn" onchange="validerDyrNavn(this.value)" placeholder="Navn">
+                    <span id="feildNavn" style="color: red"></span>
+                </div>
+                <div class="form-group">
+                    <label for="alder">Alder:</label>
+                    <input type="text" class="form-control" id="alder" onchange="validerAlder(this.value)" placeholder="Alder">
+                    <span id="feilAlder" style="color: red"></span>
+                </div>
+                <div class="form-group">
+                    <label for="beskrivelse">Beskrivelse:</label>
+                    <input type="text" class="form-control" id="beskrivelse" onchange="validerBeskrivelse(this.value)" placeholder="Skriv en beskrivelse">
+                    <span id="feilBeskrivelse" style="color: red"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="dyr">Dyr:</label>
+                    <div id="dyr">DropDown Her</div>
+                    <span id="feilDyr" style="color: red"></span>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <div id="type">
+                        <select disabled>
+                            <option disabled selected>Velg type</option>
+                        </select>
+                    </div>
+                    <span id="feilType" style="color: red"></span>
+                </div>
+                <div class="form-group">
+                    <label for="dyrKjønn">Kjønn:</label>
+                    <div id="dyrkjønn">
+                        <select disabled>
+                            <option disabled selected>Velg kjønn</option>
+                        </select></div>
+
+                    <span id="feilDyrKjønn" style="color: red"></span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="endreEtDyr()">Endre</button>
+                    <button class="btn btn-danger" onclick="window.location.href = 'index.html'">Tilbake</button>
+                    <span id="statusDyr" style="color: red"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
