@@ -1,3 +1,5 @@
+//POJO for poststed slik at applikasjonen kan teste om brukeres har skrevet inn riktig postnr i registrering av bruker siden.
+
 package com.example.kjeledyr;
 
 public class PostSted {

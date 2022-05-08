@@ -1,3 +1,4 @@
+//POJO for dropdown meny for registrering av dyr.
 package com.example.kjeledyr;
 
 public class DyrDropdown {

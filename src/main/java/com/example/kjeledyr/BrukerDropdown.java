@@ -1,3 +1,4 @@
+//POJO for Dropdown meny når en bruker skal registreres
 package com.example.kjeledyr;
 
 public class BrukerDropdown {

@@ -1,3 +1,4 @@
+//REPOSITORY
 package com.example.kjeledyr;
 
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Repository //VIKTIG Å BETEGNE AT DETTE ER EN REPOSITORY CLASSE
 public class ClassRepository {
 
+    //Ikke pensum. Kjører metoden ved server oppstart. Hasher admin passord.
     @PostConstruct
     public void init(){
         String sql = "UPDATE Bruker SET passord = ? WHERE brukernavn = ?";
@@ -82,7 +84,7 @@ public class ClassRepository {
         }
     }
 
-    //Sjekker om postnummeret eksisterer i databasen og leverer poststed til controller. Returnerer en OBJEKT.
+    //Sjekker om postnummeret eksisterer i databasen og leverer poststed til controller. Returnerer en et objekt
     public PostSted sjekkPostDataR(PostSted p){
         String sql ="SELECT * FROM PostSted WHERE postnummer = ?";
         try{
@@ -166,31 +168,6 @@ public class ClassRepository {
             return false;
         }
     }
-/*
-    //krypterer Admin passordet.
-    public boolean krypterAdminPassordR(Bruker admin){
-        String sql = "SELECT * FROM Bruker WHERE brukernavn = ?";
-        String sql2 = "UPDATE Bruker SET passord = ? WHERE brukernavn = ?";
-
-        try{
-            Bruker utAdmin = db.queryForObject(sql, new BeanPropertyRowMapper<>(Bruker.class),admin.getBrukernavn());
-            if(admin.getPassord().equals(utAdmin.getPassord())){
-                db.update(sql2,krypterPassord(utAdmin.getPassord()),admin.getBrukernavn());
-                return true;
-            }
-            else {
-                logger.error("Feil i krypterAdminPassordR. Passordet stemte ikke");
-                return false;
-            }
-        }
-        catch(Exception e){
-            logger.error("Feil i krypterAdminPassordR " + e);
-            return false;
-        }
-    }
-
-
- */
 
     //HENTER LISTE AV DYR som er registrert av brukere
     public List<Liste> hentAlleDyrR(){
@@ -213,7 +190,6 @@ public class ClassRepository {
 
         try{
             List<Liste> dataFraDB = db.query(sql1, new BeanPropertyRowMapper(Liste.class));
-
             return dataFraDB;
         }
         catch(Exception e){
@@ -238,6 +214,7 @@ public class ClassRepository {
         }
     }
 
+    //oppdaterer DB med endringene som ble gjort fra endreDyr siden.
     public boolean endreEtDyrR(Dyr d){
         String sql = "UPDATE Dyr " +
                 "SET navn=?,alder=?,beskrivelse=?,dyr=?,type=?,kjønn=? " +
@@ -252,6 +229,7 @@ public class ClassRepository {
         }
     }
 
+    //sletter et dyr fra DB.
     public boolean slettEtDyrR(int id){
         String sql = "DELETE FROM Dyr WHERE dyrID = ?";
 
@@ -261,6 +239,19 @@ public class ClassRepository {
         }
         catch (Exception e){
             logger.error("Feil i slettEtDyrR " + e);
+            return false;
+        }
+    }
+
+    public boolean slettAltR(){
+        String sql = "DELETE FROM Dyr";
+
+        try{
+            db.update(sql);
+            return true;
+        }
+        catch (Exception e){
+            logger.error("Feil i slettAltR " +e);
             return false;
         }
     }

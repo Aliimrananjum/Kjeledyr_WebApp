@@ -1,3 +1,5 @@
+//POJO for å lage en (array) List<Liste> som brukes til å lagre data som kommer ut fra spørring fra repository public List<Liste> hentListeAvDyrR() metoden.
+
 package com.example.kjeledyr;
 
 public class Liste {

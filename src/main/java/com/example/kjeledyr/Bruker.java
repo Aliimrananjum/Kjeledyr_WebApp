@@ -1,7 +1,9 @@
+//POJO for når det skal registreres en bruker på på bruker.html/bruker.js
+
 package com.example.kjeledyr;
 
 public class Bruker {
-    private int brukerID;
+    private int brukerID; //Primærnøkkel i DB.
     private String brukernavn;
     private String passord;
     private String fornavn;
@@ -11,7 +13,7 @@ public class Bruker {
     private String gateAdresse;
     private String postnummer;
     private String kjønn;
-    private int admin;
+    private int admin; // for å legge rettigheter (0/1) gjennom sessions.
 
     public Bruker(int brukerID, String brukernavn, String passord, String fornavn, String etternavn, String epost, String mobilNr, String gateAdresse, String postnummer, String kjønn, int admin) {
         this.brukerID = brukerID;

@@ -1,30 +1,6 @@
 $(function (){
-    //hentAlleDyr();
     hentDataAvDyr()
 })
-/*
-//henter ut liste av dyr fra server
-function hentAlleDyr(){
-    $.get("/hentAlleDyr", function (listeAvDyr){
-        formaterListeAvDyr(listeAvDyr)
-    })
-}
-
-function formaterListeAvDyr(listeAvDyr){
-    let ut = "<table class='table table-striped'><tr><th>Brukernavn</th><th>Navn</th><th>Alder</th><th>Beskrivelse</th>" +
-        "<th>Dyr</th><th>Type</th><th>Kjønn</th></tr>";
-    for(const data of listeAvDyr){
-        ut += "<tr><td>" + data.brukernavn + "</td><td>" + data.navn + "</td><td>" + data.alder + "</td><td>" + data.beskrivelse + "</td>" +
-            "<td>" + data.dyr + "</td><td>" + data.type + "</td><td>" + data.kjønn + "</td></tr>";
-    }
-    hentDataAvDyr()
-    ut += "</table>"
-    console.log(ut)
-    $("#listeAvDyr").html(ut);
-}
-
- */
-
 
 //Henter informasjon fra to tabeller og legger dem inn i Liste Objetet for å liste det opp på frontend
 function hentDataAvDyr(){
@@ -89,15 +65,14 @@ function validerBrukerEndre(id){
 
 function validerBrukerSlett(id){
     $.get("/validerBruker", function (validertBruker){
-        if(validertBruker){
+        if(!validertBruker) {
+            $("#statusIndex").html("Du har ikke rettigheter for å slette et register");
+        }
+        else {
             const url = "/slettEtDyr?id=" + id;
             $.get(url,function (validerEtSlett){
                 if(validerEtSlett){
                     hentDataAvDyr()
-                }
-                else{
-                    $("#statusIndex").html("noe galt her");
-
                 }
             })
                 .fail(function (jqXHR){
@@ -107,8 +82,34 @@ function validerBrukerSlett(id){
         }
 
     })
+}
+
+//Slett alt knappen. Validerer om brukeren har riktig rettigheter. Hvis det er riktig retterigheter, kjører slettAlt funksjonen.
+function validerSlettAlt(){
+    $.get("/validerBruker", function (validertBruker){
+        if(!validertBruker){
+            $("#statusIndex").html("Du har ikke rettigheter for å slette registeret");
+        }
+        else{
+            slettAlt()
+        }
+    })
         .fail(function (jqXHR){
             const json = $.parseJSON(jqXHR.responseText);
             $("#statusIndex").html(json.message);
-        })
+        });
+}
+
+//Slett alt knappen. Sletter hele registeret.
+function slettAlt(){
+    $.get("/slettAlt", function (validertSlettAlt){
+        if(validertSlettAlt){
+            hentDataAvDyr()
+        }
+    })
+        .fail(function (jqXHR){
+        const json = $.parseJSON(jqXHR.responseText);
+        $("#statusIndex").html(json.message);
+    });
+
 }

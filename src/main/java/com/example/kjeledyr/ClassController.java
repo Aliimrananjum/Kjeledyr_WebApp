@@ -1,3 +1,4 @@
+//CONTROLLER
 package com.example.kjeledyr;
 
 import org.slf4j.Logger;
@@ -208,28 +209,14 @@ public class ClassController {
 
 
 
-    //Henter liste av dyr fra DB.
-    @GetMapping("/hentAlleDyr")
-    public List<Liste> hentAlleDyrC(HttpServletResponse response) throws IOException{
-        List<Liste> utListeAvDyr = rep.hentAlleDyrR();
-        if(utListeAvDyr == null){
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i server, kunne ikke hente liste av dyr. Prøv igjen senere!");
-            return null;
-        }
-        else{
-            return utListeAvDyr;
-        }
-    }
-
-
     //henter data fra Bruker og Dyr tabellen og legger det inn i en Liste array som sendes tilbake til klienten for å liste det opp
     @GetMapping("/hentDataAvDyr")
     public List<Liste> hentListeAvDyrC(HttpServletResponse response) throws IOException{
         List<Liste> dataFraDB = rep.hentListeAvDyrR();
-        System.out.println(dataFraDB);
-        if(dataFraDB.isEmpty()){
+        //hvorfor funker det hvis jeg tar == 0 og ikke isEmpty
+        //spør hva som skjer her med if, blir return dataFraDB gjort uansett?
+        if(dataFraDB == null){
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i server, kunne ikke hente data. Prøv igjen senere!");
-            return null;
         }
         return dataFraDB;
     }
@@ -281,5 +268,17 @@ public class ClassController {
             return true;
         }
     }
+
+    @GetMapping("/slettAlt")
+    public boolean slettAltC(HttpServletResponse response) throws IOException{
+        if(!rep.slettAltR()){
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Kunne ikke slette. Prøv igjen senere");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
 }
 

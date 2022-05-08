@@ -1,8 +1,9 @@
+//POJO for Dyr som registreres i registrerDyr.html/js
 package com.example.kjeledyr;
 
 public class Dyr {
-    private int dyrID;
-    private int brukerID;
+    private int dyrID; //primærnøkkel
+    private int brukerID; // Fremmednøkkel
     private String navn;
     private String alder;
     private String beskrivelse;
@@ -10,7 +11,7 @@ public class Dyr {
     private String type;
     private String kjønn;
 
-    public Dyr(int dyrID, int brukerID, String brukernavn, String navn, String alder, String beskrivelse, String dyr, String type, String kjønn) {
+    public Dyr(int dyrID, int brukerID, String navn, String alder, String beskrivelse, String dyr, String type, String kjønn) {
         this.dyrID = dyrID;
         this.brukerID = brukerID;
         this.navn = navn;
