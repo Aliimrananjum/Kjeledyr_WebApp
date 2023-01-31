@@ -1,12 +1,29 @@
-# Kjeledyr
-Created this webapp as preperation for exam in DATA1700 at OsloMet in 2022. Im currenty in my secound semester as a computer engineer student. So far I have learned Java, impimentation of Spring, Jquerry, bootstrap, vanilla JS, AJA, JSON and SQL.
-Through this webapp I wanted to demonstrate my knowlegde on how to implement all the tools that I have learned to far.
+<!-- Introduction -->
+<h2>Welcome to the Kjeledyr Webapp</h2>
 
-Kjeledyr webapp is an simple page where the user can registrate their pets.
-The main page allowes user to either sign inn with their prevoius account or create a new account if they dont already have one. Login page has multiple functions such as regEX, validation of password through bCrypt, and datasearch in DB.
-The registration of user page has the same functionalites as login page, but the page aslo confirm if the username has already been created before, and if the postal code is valid.
-After signing into kjeledyr webapp, the user can proeceed to add their pets.
-Only the admin user can delete or edit a registration. This function is done through having session controll.
+<p>
+  💻 This webapp was created as preparation for my DATA1700 exam at OsloMet in 2022. As a second-semester computer engineering student, I have learned a variety of programming languages and technologies, including Java, Spring, Jquery, Bootstrap, Vanilla JS, AJAX, JSON, and SQL. 
+</p>
 
+<p>
+  💡 With this project, I wanted to demonstrate my knowledge and ability to bring together all the tools and concepts I have learned so far. 
+</p>
 
+<!-- Main Functionality -->
+<h3>Pet Registration</h3>
 
+<p>
+  🐶 The Kjeledyr Webapp is a simple platform where users can register their pets. The main page allows for either signing in with a previous account or creating a new one. 
+</p>
+
+<p>
+  🔒 The login page is equipped with multiple security features, such as regex validation, password validation with bCrypt, and data search in the database. 
+</p>
+
+<p>
+  📝 The registration page follows the same security measures as the login page, and also confirms if the username has already been taken and if the postal code is valid. 
+</p>
+
+<p>
+  🐱 After logging in, users can proceed to add their pets. Only the admin user has the ability to delete or edit pet registrations, through session control. 
+</p>
